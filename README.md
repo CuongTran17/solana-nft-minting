@@ -1,112 +1,125 @@
-# Solana NFT Minting Program
+# 🎨 Solana NFT Minting Program
 
-Chương trình mint NFT trên Solana devnet sử dụng Anchor framework.
+Chương trình Solana để mint NFT với collection management, được xây dựng bằng Anchor Framework.
 
-## 🚀 Tính năng
+## ✨ Tính năng
 
-- ✅ Khởi tạo NFT Collection với giới hạn supply
+- ✅ Khởi tạo NFT Collection với max supply
 - ✅ Mint NFT với metadata (tên, symbol, URI)
 - ✅ Tự động tạo Associated Token Account
 - ✅ Tích hợp Metaplex Token Metadata
+- ✅ Đếm số NFT đã mint
+- ✅ Giới hạn max supply
 
-## 📋 Yêu cầu
+## 🛠️ Tech Stack
 
-- Rust 1.75+
-- Solana CLI 1.18+
-- Anchor CLI 0.32.1+
-- Node.js 18+
+- **Anchor Framework**: 0.29.0
+- **Solana**: Devnet
+- **Metaplex Token Metadata**: 4.1.2
+- **Language**: Rust + TypeScript
 
-## 🛠️ Cài đặt
+## 📦 Cài đặt
 
 ```bash
-# Cài dependencies
+# Clone repository
+git clone https://github.com/YOUR_USERNAME/solana-nft-minting.git
+cd solana-nft-minting
+
+# Cài đặt dependencies
 npm install
 
 # Build program
 npm run build
 ```
 
-## 🚢 Deploy
+## 🚀 Sử dụng
+
+### 1. Deploy lên Devnet
 
 ```bash
-# Deploy lên devnet
 npm run deploy
-
-# Hoặc build + deploy cùng lúc
-npm run build && npm run deploy
 ```
 
-## 🎨 Mint NFT
+### 2. Mint NFT
 
 ```bash
-# Mint NFT mới
 npm run mint
 ```
 
 ## 📁 Cấu trúc Project
 
 ```
-.
+solana-nft-minting/
 ├── programs/
 │   └── nft-minting/
 │       └── src/
-│           ├── lib.rs              # Smart contract chính
-│           ├── error.rs            # Custom errors
-│           ├── instructions/       # Instruction modules
-│           └── state/              # State structs
+│           └── lib.rs          # Solana program logic
 ├── tests/
-│   └── mint-nft-simple.ts         # Script mint NFT
+│   └── mint-nft-simple.ts      # Mint NFT script
 ├── target/
-│   ├── deploy/                    # Compiled programs
-│   └── idl/                       # Interface definitions
-├── Anchor.toml                    # Anchor configuration
-└── package.json                   # Node dependencies
+│   ├── deploy/                 # Compiled program
+│   └── idl/                    # Interface Definition Language
+├── Anchor.toml                 # Anchor configuration
+├── package.json                # Node dependencies
+└── tsconfig.json              # TypeScript config
 ```
 
-## 🔑 Thông tin Program
+## 🔧 Program Architecture
 
-- **Program ID**: `44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9`
-- **Cluster**: Devnet
-- **Collection PDA**: `7Y1U8JvYqLjjp83m2MENuBUnEVMQdZfV21pYa8JXaxo9`
-- **Max Supply**: 10,000 NFTs
+### Accounts
 
-## 📝 Instructions
+- **NftCollection**: Quản lý collection
+  - `authority`: Người tạo collection
+  - `total_minted`: Số NFT đã mint
+  - `max_supply`: Số NFT tối đa
+  - `bump`: PDA bump seed
 
-### 1. Initialize Collection
+### Instructions
 
-Khởi tạo NFT collection với max supply.
+1. **initialize**: Khởi tạo NFT collection
+   - Input: `max_supply: u64`
+   - Tạo PDA account để lưu thông tin collection
 
-```typescript
-await program.methods
-  .initialize(new BN(10000))
-  .accounts({ ... })
-  .rpc();
+2. **mint_nft**: Mint một NFT mới
+   - Input: `name`, `symbol`, `uri`
+   - Tạo mint account, token account, metadata
+   - Tăng `total_minted` counter
+
+## 📝 Program ID
+
+```
+44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9
 ```
 
-### 2. Mint NFT
+View on Solana Explorer:
+- [Program](https://explorer.solana.com/address/44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9?cluster=devnet)
 
-Mint NFT mới với metadata.
+## 🧪 Testing
 
-```typescript
-await program.methods
-  .mintNft(name, symbol, uri)
-  .accountsStrict({ ... })
-  .signers([mintKeypair])
-  .rpc();
+```bash
+# Mint một NFT test
+npm run mint
 ```
 
-## 🔗 Links
+## 📚 Tài liệu
 
-- [Program Explorer](https://explorer.solana.com/address/44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9?cluster=devnet)
 - [Anchor Documentation](https://www.anchor-lang.com/)
+- [Solana Documentation](https://docs.solana.com/)
 - [Metaplex Documentation](https://docs.metaplex.com/)
 
-## ⚡ Scripts
+## 🤝 Contributing
 
-- npm run build - Build Solana program
-- npm run deploy - Deploy to devnet
-- npm run mint - Mint new NFT
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-MIT
+MIT License
+
+## 👤 Author
+
+Your Name
+
+## 🔗 Links
+
+- [Solana Devnet Explorer](https://explorer.solana.com/?cluster=devnet)
+- [Anchor Book](https://book.anchor-lang.com/)
