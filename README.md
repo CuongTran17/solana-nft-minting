@@ -1,296 +1,497 @@
-# 🎨 Solana NFT Minting Program - Technical Documentation# 🎨 Solana NFT Minting Program
+# 🎨 Solana NFT Minting Program# 🎨 Solana NFT Minting Program
 
 
 
-Hệ thống mint NFT trên Solana blockchain với Anchor Framework, bao gồm smart contract (Rust) và client scripts (TypeScript).Chương trình Solana để mint NFT với image upload (IPFS) và custom attributes, được xây dựng bằng Anchor Framework.
+Chương trình Solana để mint NFT với image upload (IPFS) và custom attributes, được xây dựng bằng Anchor Framework.Chương trình Solana để mint NFT với image upload (IPFS) và custom attributes, được xây dựng bằng Anchor Framework.
 
 
 
-## 📋 Table of Contents## ✨ Tính năng
+## ✨ Tính năng## ✨ Tính năng
 
 
 
-- [I. Tổng quan](#i-tổng-quan)- ✅ Khởi tạo NFT Collection với max supply
+- ✅ Khởi tạo NFT Collection với max supply- ✅ Khởi tạo NFT Collection với max supply
 
-- [II. Smart Contract (Rust)](#ii-smart-contract-rust)- ✅ Mint NFT với metadata đầy đủ (tên, symbol, description, URI)
+- ✅ Mint NFT với metadata đầy đủ (tên, symbol, description, URI)- ✅ Mint NFT với metadata đầy đủ (tên, symbol, description, URI)
 
-  - [Architecture](#architecture)- ✅ **Hỗ trợ 2 loại ảnh**: URL từ web HOẶC upload file lên IPFS
+- ✅ **Hỗ trợ 2 loại ảnh**: URL từ web HOẶC upload file lên IPFS- ✅ **Hỗ trợ 2 loại ảnh**: URL từ web HOẶC upload file lên IPFS
 
-  - [Program Structure](#program-structure)- ✅ Upload ảnh lên IPFS qua Pinata (nếu dùng file local)
+- ✅ Upload ảnh lên IPFS qua Pinata (nếu dùng file local)- ✅ Upload ảnh lên IPFS qua Pinata (nếu dùng file local)
 
-  - [Instructions](#instructions)- ✅ Custom attributes (Xuất xứ, Tuổi, Cân nặng, Độ dài)
+- ✅ Custom attributes (Xuất xứ, Tuổi, Cân nặng, Độ dài)- ✅ Custom attributes (Xuất xứ, Tuổi, Cân nặng, Độ dài)
 
-  - [State Management](#state-management)- ✅ Interactive CLI cho người dùng nhập liệu
+- ✅ Interactive CLI cho người dùng nhập liệu- ✅ Interactive CLI cho người dùng nhập liệu
 
-  - [Account Validation](#account-validation)- ✅ Retry logic cho upload (chống lỗi network)
+- ✅ Retry logic cho upload (chống lỗi network)- ✅ Retry logic cho upload (chống lỗi network)
 
-  - [PDAs (Program Derived Addresses)](#pdas-program-derived-addresses)- ✅ Tự động tạo Associated Token Account
+- ✅ Tự động tạo Associated Token Account- ✅ Tự động tạo Associated Token Account
 
-- [III. TypeScript Client](#iii-typescript-client)- ✅ Tích hợp Metaplex Token Metadata
-
-  - [Architecture](#architecture-1)
-
-  - [Utility Modules](#utility-modules)## 🛠️ Tech Stack
-
-  - [Scripts](#scripts)
-
-- [IV. Technical Flow](#iv-technical-flow)- **Anchor Framework**: 0.29.0
-
-- [V. Installation & Usage](#v-installation--usage)- **Solana**: Devnet
-
-- [VI. Advanced Topics](#vi-advanced-topics)- **Metaplex Token Metadata**: 4.1.2
-
-- **IPFS**: Pinata API
-
----- **Language**: Rust + TypeScript
-
-- **Modules**: ES2020
-
-## I. Tổng quan
-
-## 📦 Cài đặt
-
-### 🎯 Mục đích
-
-```bash
-
-Project này tạo ra một hệ thống hoàn chỉnh để mint NFT trên Solana với:# Clone repository
-
-- Smart contract quản lý collection và mint NFTsgit clone https://github.com/CuongTran17/solana-nft-minting.git
-
-- Upload ảnh và metadata lên IPFScd solana-nft-minting
-
-- Interactive CLI cho người dùng
-
-- Retry logic cho network resilience# Cài đặt dependencies
-
-npm install
-
-### 🏗️ Tech Stack
-
-# Build program
-
-**Smart Contract:**npm run build
-
-- Language: Rust```
-
-- Framework: Anchor 0.29.0
-
-- Blockchain: Solana (Devnet)## ⚙️ Cấu hình
-
-- Standards: Metaplex Token Metadata
-
-Tạo file `.env` trong thư mục `tests/`:
-
-**Client:**
-
-- Language: TypeScript (ES2020)```env
-
-- Runtime: Node.js + ts-nodePINATA_API_KEY=your_api_key_here
-
-- Storage: IPFS (Pinata API)PINATA_SECRET_KEY=your_secret_key_here
-
-- Libraries: @solana/web3.js, @coral-xyz/anchor```
+- ✅ Tích hợp Metaplex Token Metadata- ✅ Tích hợp Metaplex Token Metadata
 
 
 
-### 📊 Metrics**Lưu ý**: 
+## 🛠️ Tech Stack## 🛠️ Tech Stack
+
+
+
+- **Anchor Framework**: 0.29.0- **Anchor Framework**: 0.29.0
+
+- **Solana**: Devnet- **Solana**: Devnet
+
+- **Metaplex Token Metadata**: 4.1.2- **Metaplex Token Metadata**: 4.1.2
+
+- **IPFS**: Pinata API- **IPFS**: Pinata API
+
+- **Language**: Rust + TypeScript- **Language**: Rust + TypeScript
+
+- **Modules**: ES2020- **Modules**: ES2020
+
+
+
+------
+
+
+
+## 📦 Cài đặt## 📦 Cài đặt
+
+
+
+```bash```bash
+
+# Clone repository# Clone repository
+
+git clone https://github.com/CuongTran17/solana-nft-minting.gitgit clone https://github.com/CuongTran17/solana-nft-minting.git
+
+cd solana-nft-mintingcd solana-nft-minting
+
+
+
+# Cài đặt dependencies# Cài đặt dependencies
+
+npm installnpm install
+
+
+
+# Build program# Build program
+
+npm run buildnpm run build
+
+``````
+
+
+
+## ⚙️ Cấu hình## ⚙️ Cấu hình
+
+
+
+Tạo file `.env` trong thư mục `tests/`:Tạo file `.env` trong thư mục `tests/`:
+
+
+
+```env```env
+
+PINATA_API_KEY=your_api_key_herePINATA_API_KEY=your_api_key_here
+
+PINATA_SECRET_KEY=your_secret_key_herePINATA_SECRET_KEY=your_secret_key_here
+
+``````
+
+
+
+**Lưu ý**: **Lưu ý**: 
 
 - Chỉ cần setup Pinata nếu muốn upload file ảnh local lên IPFS
 
+- Nếu dùng URL ảnh có sẵn (từ web) thì không cần Pinata- Chỉ cần setup Pinata nếu muốn upload file ảnh local lên IPFS
+
+- Hướng dẫn lấy API keys: Xem `PINATA_SETUP.md`
+
 - **Program ID**: `44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9`- Nếu dùng URL ảnh có sẵn (từ web) thì không cần Pinata
+
+## 🚀 Sử dụng
 
 - **Network**: Solana Devnet- Hướng dẫn lấy API keys: Xem `PINATA_SETUP.md`
 
+### 1. Deploy Program lên Devnet
+
 - **Max Supply**: 10,000 NFTs
 
-- **Mint Cost**: ~0.015 SOL per NFT## 🚀 Sử dụng
+```bash
+
+npm run deploy- **Mint Cost**: ~0.015 SOL per NFT## 🚀 Sử dụng
+
+```
 
 - **Code Size**: ~1,200 lines TypeScript, ~180 lines Rust
 
-### 1. Deploy Program lên Devnet
-
----
-
-```bash
-
-## II. Smart Contract (Rust)npm run deploy
-
-```
-
-### Architecture
-
 ### 2. Mint NFT (Interactive - Khuyến nghị)
 
-```
-
-programs/nft-minting/src/```bash
-
-├── lib.rs              # Entry point, program logicnpm run mint:interactive
-
-├── error.rs            # Custom error definitions```
-
-├── instructions/       # Instruction handlers
-
-│   ├── initialize.rs  # Initialize collectionCLI sẽ hỏi:
-
-│   ├── mint_nft.rs    # Mint NFT logic- **URL ảnh hoặc đường dẫn file** 
-
-│   └── mod.rs         # Module exports  - URL web: `https://i.imgur.com/abc.png` (nhanh, không cần upload)
-
-└── state/             # State structures  - File local: `tests/images/nft1.png` (upload lên IPFS)
-
-    ├── nft_data.rs    # NFT data models- Tên, Symbol, Mô tả NFT
-
-    └── mod.rs         # Module exports- 4 thuộc tính: Xuất xứ, Tuổi, Cân nặng, Độ dài
-
-```
-
-**Ví dụ sử dụng:**
-
-### Program Structure
+### 1. Deploy Program lên Devnet
 
 ```bash
 
-#### **Entry Point (`lib.rs`)**# Mint với URL ảnh (nhanh nhất)
+npm run mint:interactive---
 
-🖼️  Nhập URL ảnh: https://i.imgur.com/your-image.png
+```
 
-```rust
+```bash
 
-declare_id!("44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9");# Mint với file local (upload lên IPFS)
+CLI sẽ hỏi:
+
+- **URL ảnh hoặc đường dẫn file** ## II. Smart Contract (Rust)npm run deploy
+
+  - URL web: `https://i.imgur.com/abc.png` (nhanh, không cần upload)
+
+  - File local: `tests/images/nft1.png` (upload lên IPFS)```
+
+- Tên, Symbol, Mô tả NFT
+
+- 4 thuộc tính: Xuất xứ, Tuổi, Cân nặng, Độ dài### Architecture
+
+
+
+**Ví dụ sử dụng:**### 2. Mint NFT (Interactive - Khuyến nghị)
+
+
+
+```bash```
+
+# Mint với URL ảnh (nhanh nhất)
+
+🖼️  Nhập URL ảnh: https://i.imgur.com/your-image.pngprograms/nft-minting/src/```bash
+
+
+
+# Mint với file local (upload lên IPFS)├── lib.rs              # Entry point, program logicnpm run mint:interactive
 
 🖼️  Nhập đường dẫn file: tests/images/my-nft.png
 
-#[program]```
+```├── error.rs            # Custom error definitions```
 
-pub mod nft_minting {
 
-    use super::*;## 📁 Cấu trúc Project
 
-    
+---├── instructions/       # Instruction handlers
 
-    pub fn initialize(ctx: Context<Initialize>, max_supply: u64) -> Result<()>```
 
-    pub fn mint_nft(ctx: Context<MintNFT>, name: String, symbol: String, uri: String) -> Result<()>solana-nft-minting/
 
-}├── programs/
+## 📁 Cấu trúc Project│   ├── initialize.rs  # Initialize collectionCLI sẽ hỏi:
 
-```│   └── nft-minting/
 
-│       └── src/
 
-**Chức năng:**│           ├── lib.rs              # Program chính
+```│   ├── mint_nft.rs    # Mint NFT logic- **URL ảnh hoặc đường dẫn file** 
 
-- `declare_id!`: Khai báo Program ID duy nhất│           ├── instructions/       # Logic mint NFT
+solana-nft-minting/
 
-- `#[program]`: Macro định nghĩa Anchor program│           └── state/              # Collection state
+├── programs/│   └── mod.rs         # Module exports  - URL web: `https://i.imgur.com/abc.png` (nhanh, không cần upload)
 
-- Expose 2 instructions: `initialize` và `mint_nft`├── tests/
+│   └── nft-minting/
+
+│       └── src/└── state/             # State structures  - File local: `tests/images/nft1.png` (upload lên IPFS)
+
+│           ├── lib.rs              # Program chính
+
+│           ├── instructions/       # Logic mint NFT    ├── nft_data.rs    # NFT data models- Tên, Symbol, Mô tả NFT
+
+│           └── state/              # Collection state
+
+├── tests/    └── mod.rs         # Module exports- 4 thuộc tính: Xuất xứ, Tuổi, Cân nặng, Độ dài
 
 │   ├── mint-interactive.ts         # CLI tương tác ⭐
 
----│   ├── mint-nft-simple.ts          # Script đơn giản
+│   ├── mint-nft-simple.ts          # Script đơn giản```
 
 │   ├── utils/                      # Utils tái sử dụng
 
-### Instructions│   │   ├── pinata.ts              # IPFS upload
+│   │   ├── pinata.ts              # Upload IPFS**Ví dụ sử dụng:**
 
-│   │   ├── metadata.ts            # Metadata builder
+│   │   ├── metadata.ts            # NFT metadata
 
-#### 1. **Initialize Collection**│   │   └── solana.ts              # Solana helpers
+│   │   └── solana.ts              # Blockchain logic### Program Structure
 
-│   └── images/                     # Folder chứa ảnh NFT
+│   └── images/                     # Chứa ảnh để test
 
-**Signature:**├── target/
+├── Anchor.toml                     # Config Anchor```bash
 
-```rust│   └── idl/
+├── package.json                    # Dependencies
 
-pub fn initialize(ctx: Context<Initialize>, max_supply: u64) -> Result<()>│       └── nft_minting.json       # Interface Definition
+└── README.md#### **Entry Point (`lib.rs`)**# Mint với URL ảnh (nhanh nhất)
 
-```├── .env                            # Pinata API keys
+```
 
-├── package.json
-
-**Mục đích:** Khởi tạo NFT collection với max supply├── Anchor.toml
-
-└── README.md
-
-**Accounts Required:**```
-
-```rust
-
-#[derive(Accounts)]## 🎯 Program Details
-
-pub struct Initialize<'info> {
-
-    #[account(**Program ID**: `44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9`
-
-        init,                           // Tạo account mới
-
-        payer = authority,              // Authority trả phí**Collection PDA**: Tự động tạo từ seed `"nft_collection"`
-
-        space = 8 + 32 + 8 + 8 + 1,    // Discriminator + Pubkey + 2xu64 + u8
-
-        seeds = [b"nft_collection"],    // PDA seed### Instructions
-
-        bump                            // Bump seed
-
-    )]1. **initialize(max_supply)**: Khởi tạo collection
-
-    pub nft_collection: Account<'info, NftCollection>,2. **mint_nft(name, symbol, uri)**: Mint NFT mới
-
-    
-
-    #[account(mut)]## 📋 NFT Attributes
-
-    pub authority: Signer<'info>,      // Người khởi tạo collection
-
-    Mỗi NFT có 4 thuộc tính cố định:
-
-    pub system_program: Program<'info, System>,
-
-}1. **Xuất xứ** (Origin) - Text
-
-```2. **Tuổi** (Age) - Number  
-
-3. **Cân nặng** (Weight) - Number (kg)
-
-**Process Flow:**4. **Độ dài** (Length) - Number (cm)
-
-1. Validate `authority` là signer
-2. Tạo PDA account với seed `"nft_collection"`
-3. Allocate space: 57 bytes total
-   - 8 bytes: Anchor discriminator
-   - 32 bytes: `authority` (Pubkey)
-   - 8 bytes: `total_minted` (u64)
-   - 8 bytes: `max_supply` (u64)
-   - 1 byte: `bump` (u8)
-4. Initialize state:
-   ```rust
-   nft_collection.authority = ctx.accounts.authority.key();
-   nft_collection.total_minted = 0;
-   nft_collection.max_supply = max_supply;
-   nft_collection.bump = ctx.bumps.nft_collection;
-   ```
-5. Log success message
-
-**Security:**
-- ✅ PDA ensures deterministic address
-- ✅ Only signer can initialize
-- ✅ One-time initialization (init constraint)
+🖼️  Nhập URL ảnh: https://i.imgur.com/your-image.png
 
 ---
 
-#### 2. **Mint NFT**
-
-**Signature:**
 ```rust
-pub fn mint_nft(
+
+## 🔧 Chi tiết kỹ thuật
+
+declare_id!("44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9");# Mint với file local (upload lên IPFS)
+
+### Smart Contract (Rust)
+
+🖼️  Nhập đường dẫn file: tests/images/my-nft.png
+
+**Program Structure (`programs/nft-minting/src/lib.rs`):**
+
+#[program]```
+
+```rust
+
+declare_id!("44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9");pub mod nft_minting {
+
+
+
+#[program]    use super::*;## 📁 Cấu trúc Project
+
+pub mod nft_minting {
+
+    pub fn initialize(ctx: Context<Initialize>, max_supply: u64) -> Result<()>    
+
+    pub fn mint_nft(ctx: Context<MintNFT>, name: String, symbol: String, uri: String) -> Result<()>
+
+}    pub fn initialize(ctx: Context<Initialize>, max_supply: u64) -> Result<()>```
+
+```
+
+    pub fn mint_nft(ctx: Context<MintNFT>, name: String, symbol: String, uri: String) -> Result<()>solana-nft-minting/
+
+**2 Instructions chính:**
+
+}├── programs/
+
+1. **`initialize(max_supply)`**: Khởi tạo Collection
+
+   - Tạo PDA account lưu thông tin collection```│   └── nft-minting/
+
+   - Set max supply (mặc định: 10,000 NFTs)
+
+   - Authority = deployer│       └── src/
+
+
+
+2. **`mint_nft(name, symbol, uri)`**: Mint NFT mới**Chức năng:**│           ├── lib.rs              # Program chính
+
+   - Kiểm tra: `total_minted < max_supply`
+
+   - Tạo mint account mới- `declare_id!`: Khai báo Program ID duy nhất│           ├── instructions/       # Logic mint NFT
+
+   - Call Metaplex CPI để tạo metadata
+
+   - Tự động tăng `total_minted`- `#[program]`: Macro định nghĩa Anchor program│           └── state/              # Collection state
+
+
+
+**State Structure (`programs/nft-minting/src/state/nft_data.rs`):**- Expose 2 instructions: `initialize` và `mint_nft`├── tests/
+
+
+
+```rust│   ├── mint-interactive.ts         # CLI tương tác ⭐
+
+#[account]
+
+pub struct NftCollection {---│   ├── mint-nft-simple.ts          # Script đơn giản
+
+    pub authority: Pubkey,
+
+    pub total_minted: u64,│   ├── utils/                      # Utils tái sử dụng
+
+    pub max_supply: u64,
+
+    pub bump: u8,### Instructions│   │   ├── pinata.ts              # IPFS upload
+
+}
+
+```│   │   ├── metadata.ts            # Metadata builder
+
+
+
+### TypeScript Client#### 1. **Initialize Collection**│   │   └── solana.ts              # Solana helpers
+
+
+
+**Utility Modules:**│   └── images/                     # Folder chứa ảnh NFT
+
+
+
+1. **`tests/utils/pinata.ts`** - IPFS Upload**Signature:**├── target/
+
+   ```typescript
+
+   uploadImageToPinata(filePath): Promise<string>  // Upload ảnh → trả về IPFS URL```rust│   └── idl/
+
+   uploadMetadataToPinata(metadata): Promise<string>  // Upload JSON
+
+   ```pub fn initialize(ctx: Context<Initialize>, max_supply: u64) -> Result<()>│       └── nft_minting.json       # Interface Definition
+
+   - Retry logic: 3 lần, backoff 2s/4s/6s
+
+   - Timeout: 60s cho ảnh, 30s cho metadata```├── .env                            # Pinata API keys
+
+
+
+2. **`tests/utils/metadata.ts`** - NFT Metadata├── package.json
+
+   ```typescript
+
+   interface NFTAttributes {**Mục đích:** Khởi tạo NFT collection với max supply├── Anchor.toml
+
+       origin: string;    // Xuất xứ
+
+       age: string;       // Tuổi└── README.md
+
+       weight: string;    // Cân nặng
+
+       length: string;    // Độ dài**Accounts Required:**```
+
+   }
+
+   ```rust
+
+   createNFTMetadata(name, description, imageUri, attributes)
+
+   ```#[derive(Accounts)]## 🎯 Program Details
+
+
+
+3. **`tests/utils/solana.ts`** - Blockchain Logicpub struct Initialize<'info> {
+
+   ```typescript
+
+   findCollectionPDA(): [PublicKey, number]  // Tìm PDA của collection    #[account(**Program ID**: `44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9`
+
+   findMetadataPDA(mint): [PublicKey, number]  // PDA của metadata
+
+   mintNFTOnChain(program, name, symbol, uri)  // Execute mint transaction        init,                           // Tạo account mới
+
+   ```
+
+        payer = authority,              // Authority trả phí**Collection PDA**: Tự động tạo từ seed `"nft_collection"`
+
+**Scripts:**
+
+        space = 8 + 32 + 8 + 8 + 1,    // Discriminator + Pubkey + 2xu64 + u8
+
+- **`tests/mint-interactive.ts`** ⭐: CLI với prompts, hỗ trợ URL/file
+
+- **`tests/mint-nft-simple.ts`**: Script automation đơn giản        seeds = [b"nft_collection"],    // PDA seed### Instructions
+
+
+
+---        bump                            // Bump seed
+
+
+
+## 💰 Chi phí    )]1. **initialize(max_supply)**: Khởi tạo collection
+
+
+
+Mỗi NFT minted trên Devnet:    pub nft_collection: Account<'info, NftCollection>,2. **mint_nft(name, symbol, uri)**: Mint NFT mới
+
+- **Rent**: ~0.0014 SOL (mint account + metadata)
+
+- **Transaction fee**: ~0.00001 SOL    
+
+- **Total**: ~0.0015 SOL/NFT
+
+    #[account(mut)]## 📋 NFT Attributes
+
+**Lưu ý**: Trên Mainnet chi phí có thể cao hơn do gas fees.
+
+    pub authority: Signer<'info>,      // Người khởi tạo collection
+
+---
+
+    Mỗi NFT có 4 thuộc tính cố định:
+
+## 🔍 Troubleshooting
+
+    pub system_program: Program<'info, System>,
+
+### Lỗi: "IPFS upload failed"
+
+- **Nguyên nhân**: Network timeout hoặc API key sai}1. **Xuất xứ** (Origin) - Text
+
+- **Giải pháp**: 
+
+  - Kiểm tra `.env` có đúng API keys```2. **Tuổi** (Age) - Number  
+
+  - Thử lại (script tự retry 3 lần)
+
+  - Hoặc dùng URL ảnh thay vì upload file3. **Cân nặng** (Weight) - Number (kg)
+
+
+
+### Lỗi: "Max supply reached"**Process Flow:**4. **Độ dài** (Length) - Number (cm)
+
+- **Nguyên nhân**: Đã mint đủ 10,000 NFTs
+
+- **Giải pháp**: Deploy program mới hoặc tăng `max_supply`1. Validate `authority` là signer
+
+2. Tạo PDA account với seed `"nft_collection"`
+
+### Lỗi: "Insufficient funds"3. Allocate space: 57 bytes total
+
+- **Nguyên nhân**: Wallet không đủ SOL   - 8 bytes: Anchor discriminator
+
+- **Giải pháp**: Airdrop thêm SOL trên Devnet   - 32 bytes: `authority` (Pubkey)
+
+  ```bash   - 8 bytes: `total_minted` (u64)
+
+  solana airdrop 2 <YOUR_WALLET_ADDRESS> --url devnet   - 8 bytes: `max_supply` (u64)
+
+  ```   - 1 byte: `bump` (u8)
+
+4. Initialize state:
+
+---   ```rust
+
+   nft_collection.authority = ctx.accounts.authority.key();
+
+## 📚 Tài liệu tham khảo   nft_collection.total_minted = 0;
+
+   nft_collection.max_supply = max_supply;
+
+- [Anchor Framework](https://www.anchor-lang.com/)   nft_collection.bump = ctx.bumps.nft_collection;
+
+- [Metaplex Token Metadata](https://docs.metaplex.com/programs/token-metadata/)   ```
+
+- [Solana Cookbook](https://solanacookbook.com/)5. Log success message
+
+- [Pinata IPFS](https://docs.pinata.cloud/)
+
+**Security:**
+
+---- ✅ PDA ensures deterministic address
+
+- ✅ Only signer can initialize
+
+## 📝 License- ✅ One-time initialization (init constraint)
+
+
+
+MIT License---
+
+
+
+## 👨‍💻 Author#### 2. **Mint NFT**
+
+
+
+CuongTran17**Signature:**
+
+```rust
+
+---pub fn mint_nft(
+
     ctx: Context<MintNFT>,
-    name: String,
-    symbol: String,
-    uri: String,
+
+**Program ID**: `44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9`      name: String,
+
+**Network**: Solana Devnet      symbol: String,
+
+**Collection**: 8/10,000 NFTs minted    uri: String,
+
 ) -> Result<()>
 ```
 
