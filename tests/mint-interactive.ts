@@ -7,12 +7,13 @@ import axios from "axios";
 import path from "path";
 import prompts from "prompts";
 import { createRequire } from "module";
+import { BN } from "bn.js";
 
 const require = createRequire(import.meta.url);
 const IDL = require("../target/idl/nft_minting.json");
 
 const METADATA_PROGRAM_ID = new PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
-const PROGRAM_ID = new PublicKey("44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9");
+const PROGRAM_ID = new PublicKey("Eft87tczn4tK9Xseo7ANtiRYfrchcHpmBeUZyM6TE2Ec");
 
 // Pinata API keys
 const PINATA_API_KEY = process.env.PINATA_API_KEY || "";
@@ -171,7 +172,7 @@ async function mintNFT(
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
 
-  const program = new anchor.Program(IDL, PROGRAM_ID, provider);
+  const program = new anchor.Program(IDL, provider);
   const payer = provider.wallet as anchor.Wallet;
 
   console.log("\n" + "=".repeat(70));
@@ -186,11 +187,11 @@ async function mintNFT(
 
   // Initialize collection if needed
   try {
-    await program.account.nftCollection.fetch(nftCollectionPda);
+    await (program.account as any).nftCollection.fetch(nftCollectionPda);
   } catch {
     console.log("\n⚙️  Initializing collection...");
     await program.methods
-      .initialize(new anchor.BN(10000))
+      .initialize(new BN(10000))
       .accounts({
         nftCollection: nftCollectionPda,
         authority: payer.publicKey,
@@ -274,14 +275,24 @@ async function mintNFT(
   console.log("\n" + "=".repeat(70));
   console.log("🎉 SUCCESS! NFT MINTED!");
   console.log("=".repeat(70));
-  console.log("\n🔗 Links:");
+  
+  console.log("\n📋 NFT Details:");
+  console.log(`   🪙 Mint Address:  ${mintKeypair.publicKey.toString()}`);
+  console.log(`   💼 Token Account: ${tokenAccount.toString()}`);
+  console.log(`   � Owner:         ${payer.publicKey.toString()}`);
+  
+  console.log("\n�🔗 Explorer Links:");
   console.log(`   Transaction: https://explorer.solana.com/tx/${tx}?cluster=devnet`);
-  console.log(`   NFT: https://explorer.solana.com/address/${mintKeypair.publicKey.toString()}?cluster=devnet`);
-  console.log(`   Image: ${imageUrl}`);
+  console.log(`   NFT Mint:    https://explorer.solana.com/address/${mintKeypair.publicKey.toString()}?cluster=devnet`);
+  console.log(`   Token Acct:  https://explorer.solana.com/address/${tokenAccount.toString()}?cluster=devnet`);
+  
+  console.log("\n🎨 Metadata:");
+  console.log(`   Image:    ${imageUrl}`);
   console.log(`   Metadata: ${metadataUrl}`);
+  
   console.log("\n" + "=".repeat(70));
 
-  const collection: any = await program.account.nftCollection.fetch(nftCollectionPda);
+  const collection: any = await (program.account as any).nftCollection.fetch(nftCollectionPda);
   console.log(`\n📊 Collection: ${collection.totalMinted.toString()}/${collection.maxSupply.toString()} minted`);
 }
 

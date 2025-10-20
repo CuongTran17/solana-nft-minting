@@ -5,7 +5,7 @@ use mpl_token_metadata::instructions::{
     CreateMetadataAccountV3, CreateMetadataAccountV3InstructionArgs,
 };
 
-declare_id!("44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9");
+declare_id!("Eft87tczn4tK9Xseo7ANtiRYfrchcHpmBeUZyM6TE2Ec");
 
 #[program]
 pub mod nft_minting {
@@ -97,6 +97,7 @@ pub mod nft_minting {
                 ctx.accounts.payer.to_account_info(),
                 ctx.accounts.system_program.to_account_info(),
                 ctx.accounts.rent.to_account_info(),
+                ctx.accounts.metadata_program.to_account_info(),
             ],
         )?;
 
@@ -163,6 +164,10 @@ pub struct MintNFT<'info> {
     pub system_program: Program<'info, System>,
     pub token_program: Program<'info, Token>,
     pub associated_token_program: Program<'info, AssociatedToken>,
+    
+    /// CHECK: Metaplex Token Metadata Program
+    #[account(address = mpl_token_metadata::ID)]
+    pub metadata_program: UncheckedAccount<'info>,
 }
 
 #[account]

@@ -13,10 +13,11 @@ Chương trình Solana để mint NFT với image upload (IPFS) và custom attri
 - ✅ Retry logic cho upload (chống lỗi network)
 - ✅ Tự động tạo Associated Token Account
 - ✅ Tích hợp Metaplex Token Metadata
+- ✅ Hiển thị wallet addresses sau khi mint
 
 ## 🛠️ Tech Stack
 
-- **Anchor Framework**: 0.29.0
+- **Anchor Framework**: 0.32.1
 - **Solana**: Devnet
 - **Metaplex Token Metadata**: 4.1.2
 - **IPFS**: Pinata API
@@ -53,6 +54,8 @@ PINATA_SECRET_KEY=your_secret_key_here
 - Nếu dùng URL ảnh có sẵn (từ web) thì không cần Pinata
 - Hướng dẫn lấy API keys: Xem `PINATA_SETUP.md`
 
+---
+
 ## 🚀 Sử dụng
 
 ### 1. Deploy Program lên Devnet
@@ -61,10 +64,10 @@ PINATA_SECRET_KEY=your_secret_key_here
 npm run deploy
 ```
 
-### 2. Mint NFT (Interactive - Khuyến nghị)
+### 2. Mint NFT (Interactive CLI)
 
 ```bash
-npm run mint:interactive
+npm run mint
 ```
 
 CLI sẽ hỏi:
@@ -83,6 +86,12 @@ CLI sẽ hỏi:
 # Mint với file local (upload lên IPFS)
 🖼️  Nhập đường dẫn file: tests/images/my-nft.png
 ```
+
+**Kết quả sau khi mint:**
+- 🪙 **Mint Address**: Địa chỉ định danh NFT (như ID)
+- 💼 **Token Account**: Ví SPL Token chứa NFT
+- 👤 **Owner**: Địa chỉ ví sở hữu
+- 🔗 **Explorer Links**: Xem trên Solana Explorer
 
 ---
 
@@ -103,13 +112,13 @@ solana-nft-minting/
 │               ├── nft_data.rs     # NFT data models
 │               └── mod.rs
 ├── tests/
-│   ├── mint-interactive.ts         # CLI tương tác ⭐
-│   ├── mint-nft-simple.ts          # Script đơn giản
-│   ├── utils/                      # Utils tái sử dụng
-│   │   ├── pinata.ts              # IPFS upload
-│   │   ├── metadata.ts            # NFT metadata
-│   │   └── solana.ts              # Blockchain logic
-│   └── images/                     # Chứa ảnh để test
+│   ├── mint-interactive.ts         # CLI tương tác (Main) ⭐
+│   └── utils/                      # Utils tái sử dụng
+│       ├── pinata.ts              # IPFS upload
+│       ├── metadata.ts            # NFT metadata
+│       └── solana.ts              # Blockchain logic
+├── scripts/
+│   └── post-build.sh              # Auto-copy .so file
 ├── Anchor.toml                     # Config Anchor
 ├── package.json                    # Dependencies
 └── README.md
@@ -121,7 +130,7 @@ solana-nft-minting/
 
 ### Smart Contract (Rust)
 
-**Program ID**: `44mKazm9XGzWedW2x3KGXmRMAGkbU15pFNVKokL6ERg9`
+**Program ID**: `Eft87tczn4tK9Xseo7ANtiRYfrchcHpmBeUZyM6TE2Ec`
 
 #### Instructions
 
@@ -133,7 +142,7 @@ solana-nft-minting/
 **2. `mint_nft(name: String, symbol: String, uri: String)`**
 - Kiểm tra: `total_minted < max_supply`
 - Tạo mint account mới (NFT)
-- Tạo metadata qua Metaplex CPI
+- Tạo metadata qua Metaplex CPI (với metadata_program account)
 - Tự động tăng counter `total_minted`
 
 #### State Structure
