@@ -4,13 +4,13 @@
   "description": "NFT Minting on Solana",
   "type": "module",
   "scripts": {
-    "build": "anchor build",
-    "deploy": "anchor deploy",
+    "build": "anchor build && cp programs/nft-minting/target/deploy/nft_minting.so target/deploy/",
+    "deploy": "npm run build && anchor deploy",
     "mint": "ANCHOR_PROVIDER_URL=https://api.devnet.solana.com ANCHOR_WALLET=~/.config/solana/id.json ts-node --esm -r dotenv/config tests/mint-nft-simple.ts",
     "mint:interactive": "ANCHOR_PROVIDER_URL=https://api.devnet.solana.com ANCHOR_WALLET=~/.config/solana/id.json ts-node --esm -r dotenv/config tests/mint-interactive.ts"
   },
   "dependencies": {
-    "@coral-xyz/anchor": "^0.29.0",
+    "@coral-xyz/anchor": "^0.32.1",
     "@solana/spl-token": "^0.3.9",
     "@solana/web3.js": "^1.87.6",
     "axios": "^1.12.2",
