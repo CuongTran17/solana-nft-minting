@@ -1,0 +1,14 @@
+/home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/deps/libserde-f884e6772df36fae.rmeta: /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/integer128.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/mod.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/de.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/ser.rs /home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/build/serde-c7a8be2ee9cfbdee/out/private.rs
+
+/home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/deps/libserde-f884e6772df36fae.rlib: /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/integer128.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/mod.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/de.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/ser.rs /home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/build/serde-c7a8be2ee9cfbdee/out/private.rs
+
+/home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/deps/serde-f884e6772df36fae.d: /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/integer128.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/mod.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/de.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/ser.rs /home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/build/serde-c7a8be2ee9cfbdee/out/private.rs
+
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/lib.rs:
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/integer128.rs:
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/mod.rs:
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/de.rs:
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-1.0.228/src/private/ser.rs:
+/home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/build/serde-c7a8be2ee9cfbdee/out/private.rs:
+
+# env-dep:OUT_DIR=/home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/build/serde-c7a8be2ee9cfbdee/out

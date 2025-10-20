@@ -1,0 +1,10 @@
+/home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/deps/libsolana_instruction-afd532bd63b52a28.rmeta: /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/account_meta.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/error.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/syscalls.rs
+
+/home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/deps/libsolana_instruction-afd532bd63b52a28.rlib: /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/account_meta.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/error.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/syscalls.rs
+
+/home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/deps/solana_instruction-afd532bd63b52a28.d: /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/account_meta.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/error.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/syscalls.rs
+
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/lib.rs:
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/account_meta.rs:
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/error.rs:
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/solana-instruction-2.3.0/src/syscalls.rs:

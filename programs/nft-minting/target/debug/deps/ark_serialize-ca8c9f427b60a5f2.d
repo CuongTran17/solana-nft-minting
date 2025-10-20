@@ -1,0 +1,11 @@
+/home/test/solana-nft-minting/programs/nft-minting/target/debug/deps/ark_serialize-ca8c9f427b60a5f2.d: /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/error.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/flags.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/impls.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/../README.md
+
+/home/test/solana-nft-minting/programs/nft-minting/target/debug/deps/libark_serialize-ca8c9f427b60a5f2.rlib: /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/error.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/flags.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/impls.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/../README.md
+
+/home/test/solana-nft-minting/programs/nft-minting/target/debug/deps/libark_serialize-ca8c9f427b60a5f2.rmeta: /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/error.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/flags.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/impls.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/../README.md
+
+/home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/lib.rs:
+/home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/error.rs:
+/home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/flags.rs:
+/home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/impls.rs:
+/home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-serialize-0.4.2/src/../README.md:

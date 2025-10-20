@@ -1,0 +1,11 @@
+/home/test/solana-nft-minting/programs/nft-minting/target/debug/deps/solana_borsh-8b7446af50767096.d: /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/deprecated.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/macros.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/v0_10.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/v1.rs
+
+/home/test/solana-nft-minting/programs/nft-minting/target/debug/deps/libsolana_borsh-8b7446af50767096.rlib: /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/deprecated.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/macros.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/v0_10.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/v1.rs
+
+/home/test/solana-nft-minting/programs/nft-minting/target/debug/deps/libsolana_borsh-8b7446af50767096.rmeta: /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/deprecated.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/macros.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/v0_10.rs /home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/v1.rs
+
+/home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/lib.rs:
+/home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/deprecated.rs:
+/home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/macros.rs:
+/home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/v0_10.rs:
+/home/test/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-borsh-2.2.1/src/v1.rs:

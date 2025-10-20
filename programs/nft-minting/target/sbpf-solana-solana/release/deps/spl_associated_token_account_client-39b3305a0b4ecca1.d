@@ -1,0 +1,9 @@
+/home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/deps/libspl_associated_token_account_client-39b3305a0b4ecca1.rmeta: /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/address.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/instruction.rs
+
+/home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/deps/libspl_associated_token_account_client-39b3305a0b4ecca1.rlib: /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/address.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/instruction.rs
+
+/home/test/solana-nft-minting/programs/nft-minting/target/sbpf-solana-solana/release/deps/spl_associated_token_account_client-39b3305a0b4ecca1.d: /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/lib.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/address.rs /home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/instruction.rs
+
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/lib.rs:
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/address.rs:
+/home/test/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-associated-token-account-client-2.0.0/src/instruction.rs:
